@@ -18,5 +18,39 @@ namespace Entidades
             Tarifa = tarifa;
             ValorServicioPrestado = valorServicioPrestado;
         }
+
+        public override void CalcularCuotaModeradora()
+        {
+            float ValidarCuotaModeradora = ValorServicioPrestado * Tarifa;
+
+            if (ValidarCuotaModeradora > 250000f)
+            {
+                CuotaModeradora = 250000f;
+            } 
+            else if (ValidarCuotaModeradora > 900000f)
+            {
+
+            }
+
+
+        }
+
+        public override void CalcularTarifa()
+        {
+            float SMLMV = 1160000f;
+
+            if (SalarioDevengadoPaciente < (2 * SMLMV))
+            {
+                Tarifa = 0.15f;
+            }
+            else if (SalarioDevengadoPaciente >= (2 * SMLMV) && SalarioDevengadoPaciente <= (5 * SMLMV))
+            {
+                Tarifa = 0.20f;
+            }
+            else if (SalarioDevengadoPaciente > (5 * SMLMV))
+            {
+                Tarifa = 0.25f;
+            }
+        }
     }
 }

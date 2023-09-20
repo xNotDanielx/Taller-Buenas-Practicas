@@ -23,5 +23,9 @@ namespace Entidades
             SalarioDevengadoPaciente = salarioDevengadoPaciente;
             CuotaModeradora = cuotaModeradora;
         }
+
+        public abstract void CalcularCuotaModeradora();
+
+        public abstract void CalcularTarifa();
     }
 }

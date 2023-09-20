@@ -20,5 +20,10 @@ namespace Entidades
             ValorServicioPrestado = valorServicioPrestado;
             TopeValorCuota = topeValorCuota;
         }
+
+        public override void CalcularCuotaModeradora()
+        {
+            
+        }
     }
 }
