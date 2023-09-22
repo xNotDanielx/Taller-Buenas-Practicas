@@ -9,21 +9,38 @@ namespace Entidades
     public class RegimenSubsidiado : Paciente
     {
         public RegimenSubsidiado(){ }
-        public float Tarifa { get; set; }
         public float ValorServicioPrestado { get; set; }
         public float TopeValorCuota { get; set; }
 
-        public RegimenSubsidiado(string NumeroLiquidacion, string IdPaciente, string TipoAfiliacion, float SalarioDevengadoPaciente, float cuotaModeradora, float tarifa, float valorServicioPrestado, float topeValorCuota)
+        public RegimenSubsidiado(string NumeroLiquidacion, string IdPaciente, string TipoAfiliacion, float SalarioDevengadoPaciente, float cuotaModeradora, float valorServicioPrestado, float topeValorCuota)
         : base(NumeroLiquidacion, IdPaciente, TipoAfiliacion, SalarioDevengadoPaciente, cuotaModeradora)
         {
-            Tarifa = tarifa;
             ValorServicioPrestado = valorServicioPrestado;
             TopeValorCuota = topeValorCuota;
         }
 
-        public override void CalcularCuotaModeradora()
+        public override float CalcularCuotaModeradora(float Tarifa)
         {
-            
+            float ValidarCuotaModeradora = ValorServicioPrestado * Tarifa;
+            return ValidarCuotaModeradora;
+        }
+
+        public override void ValidarCuotaModeradora()
+        {
+            float Tarifa = 0.05f;
+            if(CalcularCuotaModeradora(Tarifa) > 200000)
+            {
+                CuotaModeradora = 200000;
+            }
+            else
+            {
+                CuotaModeradora = CalcularCuotaModeradora(Tarifa);
+            }
+        }
+
+        public override string ToString()
+        {
+            return $"{NumeroLiquidacion};{IdPaciente};{TipoAfiliacion};{SalarioDevengadoPaciente};{CuotaModeradora};{ValorServicioPrestado};{TopeValorCuota}";
         }
     }
 }

@@ -24,8 +24,7 @@ namespace Entidades
             CuotaModeradora = cuotaModeradora;
         }
 
-        public abstract void CalcularCuotaModeradora();
-
-        public abstract void CalcularTarifa();
+        public abstract float CalcularCuotaModeradora(float Tarifa);
+        public abstract void ValidarCuotaModeradora();
     }
 }
