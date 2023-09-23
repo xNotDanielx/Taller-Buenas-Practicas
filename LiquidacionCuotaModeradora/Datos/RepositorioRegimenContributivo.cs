@@ -18,6 +18,20 @@ namespace Datos
             writer.Close();
         }
 
+        public RegimenContributivo BuscarPorId(string identificacion)
+        {
+            List<RegimenContributivo> pacientesContributivos = GetAll();
+
+            foreach (var item in pacientesContributivos)
+            {
+                if (item.IdPaciente == identificacion)
+                {
+                    return item;
+                }
+            }
+            return null;
+        }
+
         public RegimenContributivo Mapper(string linea)
         {
             var Paciente = new RegimenContributivo();

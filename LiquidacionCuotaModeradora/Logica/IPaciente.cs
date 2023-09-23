@@ -8,7 +8,7 @@ namespace Logica
 {
     public interface IPaciente<T>
     {
-        void GuardarPaciente(T Paciente);
+        string GuardarPaciente(T Paciente);
         void refresh();
         List<T> GetAll();
         void EliminarPaciente(List<T> Pacientes);
