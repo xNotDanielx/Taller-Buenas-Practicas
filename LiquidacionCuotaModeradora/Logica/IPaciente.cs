@@ -11,6 +11,6 @@ namespace Logica
         string GuardarPaciente(T Paciente);
         void refresh();
         List<T> GetAll();
-        void EliminarPaciente(List<T> Pacientes);
+        string EliminarPaciente(string identificacion);
     }
 }

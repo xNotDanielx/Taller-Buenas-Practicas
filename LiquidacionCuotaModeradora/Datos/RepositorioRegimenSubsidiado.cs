@@ -32,6 +32,20 @@ namespace Datos
             return null;
         }
 
+        public RegimenSubsidiado BuscarPorNumeroLiquidacion(string numeroLiquidacion)
+        {
+            List<RegimenSubsidiado> pacientesSubsidiados = GetAll();
+
+            foreach (var item in pacientesSubsidiados)
+            {
+                if (item.NumeroLiquidacion  == numeroLiquidacion)
+                {
+                    return item;
+                }
+            }
+            return null;
+        }
+
         public RegimenSubsidiado Mapper(string linea)
         {
             var Paciente = new RegimenSubsidiado();

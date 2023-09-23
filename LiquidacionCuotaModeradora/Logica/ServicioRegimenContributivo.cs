@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Entidades;
 using Datos;
+using System.Security.Cryptography;
 
 namespace Logica
 {
@@ -60,14 +61,90 @@ namespace Logica
             }
         }
 
-        public void EliminarPaciente(List<RegimenContributivo> Pacientes)
+        public string EliminarPaciente(string numeroLiquidacion)
         {
-            throw new NotImplementedException();
+            try
+            {
+                if (pacientesContributivos != null)
+                {
+                    if (repositorioRegimenContributivo.BuscarPorNumeroLiquidacion(numeroLiquidacion) == null)
+                    {
+                        return $"El paciente con identificación {numeroLiquidacion} no ha sido registrado como contributivo";
+                    }
+                    else
+                    {
+                        pacientesContributivos.Remove(repositorioRegimenContributivo.BuscarPorNumeroLiquidacion(numeroLiquidacion));
+                        repositorioRegimenContributivo.EliminarPaciente(pacientesContributivos);
+                        return $"El paciente con identificación {numeroLiquidacion} ha sido eliminado correctamente";
+                    }
+                }
+                else
+                {
+                    return "No existen pacientes contributivos en este momento para eliminar";
+                }
+            } catch (Exception e)
+            {
+                return $"Error de la aplicación: {e.Message}";
+            }
+        }
+
+        public void ModificarPaciente(string numeroLiquidacion)
+        {
+            try
+            {
+                if (pacientesContributivos != null)
+                {
+                    if (repositorioRegimenContributivo.BuscarPorNumeroLiquidacion(numeroLiquidacion) == null)
+                    {
+                        Console.WriteLine($"El paciente con identificación {numeroLiquidacion} no ha sido registrado como contributivo");
+                    }
+                    else
+                    {
+                        for (int i = 0; i <= pacientesContributivos.Count(); i++)
+                        {
+                            if (numeroLiquidacion.Equals(pacientesContributivos[i].NumeroLiquidacion))
+                            {
+                                pacientesContributivos[i].ValorServicioPrestado = NuevoValorServicioPrestado();
+                                pacientesContributivos[i].ValidarCuotaModeradora();
+                                repositorioRegimenContributivo.EliminarPaciente(pacientesContributivos);
+                                Console.WriteLine("Valor de servicio prestado modificado correctamente");
+                            }
+                        }
+                    }
+                } else
+                {
+                    Console.WriteLine("No existen pacientes contributivos en este momento para modificar");
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"Error de la aplicación: {e.Message}");
+            }
+        }
+
+        private float NuevoValorServicioPrestado()
+        {
+            Console.Clear();
+            Console.WriteLine(" MODIFCAR PACIENTE CONTRIBUTIVO \n");
+
+            float NuevoValor;
+            do
+            {
+                Console.WriteLine("Ingrese el nuevo valor del servicio: ");
+            } while (!float.TryParse(Console.ReadLine().Trim(), out NuevoValor) || NuevoValor < 0);
+
+            return NuevoValor;
         }
 
         public List<RegimenContributivo> GetAll()
         {
-            throw new NotImplementedException();
+            refresh();
+
+            if (pacientesContributivos == null)
+            {
+                return null;
+            }
+            return pacientesContributivos;
         }                
     }
 }
