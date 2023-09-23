@@ -146,6 +146,24 @@ namespace Logica
                 return null;
             }
             return pacientesSubsidiados;
-        }                
+        }
+
+        //public RegimenSubsidiado BuscarPorTipoAfiliacion()
+        //{
+        //    refresh();
+
+        //    if (pacientesSubsidiados == null)
+        //    {
+        //        return null;
+        //    }
+        //    foreach (var item in pacientesSubsidiados)
+        //    {
+        //        if (item.TipoAfiliacion == "Subsidiado")
+        //        {
+        //            return item;
+        //        }
+        //    }
+        //    return null;
+        //}
     }
 }

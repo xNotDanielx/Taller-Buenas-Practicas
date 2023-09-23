@@ -145,6 +145,6 @@ namespace Logica
                 return null;
             }
             return pacientesContributivos;
-        }                
+        }        
     }
 }

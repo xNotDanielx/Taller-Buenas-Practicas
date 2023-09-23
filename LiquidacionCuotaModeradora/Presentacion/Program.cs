@@ -10,6 +10,8 @@ namespace Presentacion
     {
         static void Main(string[] args)
         {
+            GUI gui = new GUI();
+            gui.Menu();
         }
     }
 }

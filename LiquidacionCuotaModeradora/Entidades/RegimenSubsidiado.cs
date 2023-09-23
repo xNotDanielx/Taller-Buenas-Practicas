@@ -10,13 +10,12 @@ namespace Entidades
     {
         public RegimenSubsidiado(){ }
         public float ValorServicioPrestado { get; set; }
-        public float TopeValorCuota { get; set; }
 
         public RegimenSubsidiado(string NumeroLiquidacion, string IdPaciente, string TipoAfiliacion, float SalarioDevengadoPaciente, float cuotaModeradora, float valorServicioPrestado, float topeValorCuota)
         : base(NumeroLiquidacion, IdPaciente, TipoAfiliacion, SalarioDevengadoPaciente, cuotaModeradora)
         {
+            TipoAfiliacion = "Subsidiado";
             ValorServicioPrestado = valorServicioPrestado;
-            TopeValorCuota = topeValorCuota;
         }
 
         public override float CalcularCuotaModeradora(float Tarifa)

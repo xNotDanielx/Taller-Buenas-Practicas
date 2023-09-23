@@ -46,6 +46,20 @@ namespace Datos
             return null;
         }
 
+        public RegimenContributivo BuscarPorTipoAfiliacion(string tipoAfiliacion)
+        {
+            List<RegimenContributivo> pacientesContributivos = GetAll();
+
+            foreach (var item in pacientesContributivos)
+            {
+                if (item.TipoAfiliacion == tipoAfiliacion)
+                {
+                    return item;
+                }
+            }
+            return null;
+        }
+
         public RegimenContributivo Mapper(string linea)
         {
             var Paciente = new RegimenContributivo();
