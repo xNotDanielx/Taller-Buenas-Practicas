@@ -11,10 +11,9 @@ namespace Entidades
         public RegimenContributivo() { }
         public float ValorServicioPrestado { get; set; }
 
-        public RegimenContributivo(string NumeroLiquidacion, string IdPaciente, string TipoAfiliacion, float SalarioDevengadoPaciente, float cuotaModeradora, float valorServicioPrestado)
-            : base(NumeroLiquidacion, IdPaciente, TipoAfiliacion, SalarioDevengadoPaciente, cuotaModeradora)
+        public RegimenContributivo(string NumeroLiquidacion, string IdPaciente, string TipoAfiliacion, float SalarioDevengadoPaciente, float valorServicioPrestado)
+            : base(NumeroLiquidacion, IdPaciente, TipoAfiliacion, SalarioDevengadoPaciente)
         {
-            TipoAfiliacion = "Contributivo";
             ValorServicioPrestado = valorServicioPrestado;
         }
 

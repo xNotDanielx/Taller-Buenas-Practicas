@@ -29,8 +29,15 @@ namespace Logica
                     // Valido que el paciente no exista en ninguno de los DOS archivos
                     if (repositorioRegimenSubsidiado.BuscarPorId(Paciente.IdPaciente) == null && repositorioRegimenContributivo.BuscarPorId(Paciente.IdPaciente) == null)
                     {
-                        repositorioRegimenSubsidiado.GuardarPaciente(Paciente);
-                        return $"Se han guardado correctamente los datos del paciente con identificación: {Paciente.IdPaciente} ";
+                        if (repositorioRegimenSubsidiado.BuscarPorNumeroLiquidacion(Paciente.NumeroLiquidacion) == null && repositorioRegimenContributivo.BuscarPorNumeroLiquidacion(Paciente.NumeroLiquidacion) == null)
+                        {
+                            repositorioRegimenSubsidiado.GuardarPaciente(Paciente);
+                            return $"Se han guardado correctamente los datos del paciente con identificación: {Paciente.IdPaciente} ";
+                        }
+                        else
+                        {
+                            return $"No se puede registrar. El numero de liquidación {Paciente.NumeroLiquidacion} ya se encuentra registrada";
+                        }
                     }
                     else
                     {
@@ -72,9 +79,9 @@ namespace Logica
                     }
                     else
                     {
-                        pacientesSubsidiados.Remove(repositorioRegimenSubsidiado.BuscarPorNumeroLiquidacion(numeroLiquidacion));
+                        pacientesSubsidiados.RemoveAll(paciente => paciente.NumeroLiquidacion == numeroLiquidacion);
                         repositorioRegimenSubsidiado.EliminarPaciente(pacientesSubsidiados);
-                        return $"El paciente con identificación {numeroLiquidacion} ha sido eliminado correctamente";
+                        return $"El paciente con identificación {numeroLiquidacion} ha sido eliminado correctamente de los subsidiados";
                     }
                 }
                 else
@@ -96,42 +103,51 @@ namespace Logica
                 {
                     if (repositorioRegimenSubsidiado.BuscarPorNumeroLiquidacion(numeroLiquidacion) == null)
                     {
-                        Console.WriteLine($"El paciente con identificación {numeroLiquidacion} no ha sido registrado como subsidiado");
+                        Console.SetCursorPosition(10, 8); Console.WriteLine($"El paciente con identificación {numeroLiquidacion} no ha sido registrado como subsidiado");
+                        Console.SetCursorPosition(10, 12); Console.WriteLine("Pulse cualquier tecla para volver al menú");
+                        Console.ReadKey();
                     }
                     else
                     {
-                        for (int i = 0; i <= pacientesSubsidiados.Count(); i++)
+                        for (int i = 0; i < pacientesSubsidiados.Count(); i++)
                         {
                             if (numeroLiquidacion.Equals(pacientesSubsidiados[i].NumeroLiquidacion))
                             {
                                 pacientesSubsidiados[i].ValorServicioPrestado = NuevoValorServicioPrestado();
                                 pacientesSubsidiados[i].ValidarCuotaModeradora();
                                 repositorioRegimenSubsidiado.EliminarPaciente(pacientesSubsidiados);
-                                Console.WriteLine("Valor de servicio prestado modificado correctamente");
+                                
+                                Console.SetCursorPosition(10, 10); Console.WriteLine("Valor de servicio prestado modificado correctamente");
+                                Console.SetCursorPosition(10, 12); Console.WriteLine("Pulse cualquier tecla para volver al menú");
+                                Console.ReadKey();
                             }
                         }
                     }
                 }
                 else
                 {
-                    Console.WriteLine("No existen pacientes subsidiados en este momento para modificar");
+                    Console.SetCursorPosition(10, 8); Console.WriteLine("No existen pacientes subsidiados en este momento para modificar");
+                    Console.SetCursorPosition(10, 12); Console.WriteLine("Pulse cualquier tecla para volver al menú");
+                    Console.ReadKey();
                 }
             }
             catch (Exception e)
             {
-                Console.WriteLine($"Error de la aplicación: {e.Message}");
+                Console.SetCursorPosition(10, 10); Console.WriteLine($"Error de la aplicación: {e.Message}");
+                Console.SetCursorPosition(10, 12); Console.WriteLine("Pulse cualquier tecla para volver al menú");
+                Console.ReadKey();
             }
         }
 
         private float NuevoValorServicioPrestado()
         {
             Console.Clear();
-            Console.WriteLine(" MODIFCAR PACIENTE SUBSIDIADO \n");
+            Console.SetCursorPosition(10, 5); Console.WriteLine(" *** MODIFCAR PACIENTE SUBSIDIADO *** ");
 
             float NuevoValor;
             do
             {
-                Console.WriteLine("Ingrese el nuevo valor del servicio: ");
+                Console.SetCursorPosition(10, 7); Console.WriteLine("Ingrese el nuevo valor del servicio: ");
             } while (!float.TryParse(Console.ReadLine().Trim(), out NuevoValor) || NuevoValor < 0);
 
             return NuevoValor;

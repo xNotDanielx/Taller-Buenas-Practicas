@@ -11,10 +11,9 @@ namespace Entidades
         public RegimenSubsidiado(){ }
         public float ValorServicioPrestado { get; set; }
 
-        public RegimenSubsidiado(string NumeroLiquidacion, string IdPaciente, string TipoAfiliacion, float SalarioDevengadoPaciente, float cuotaModeradora, float valorServicioPrestado, float topeValorCuota)
-        : base(NumeroLiquidacion, IdPaciente, TipoAfiliacion, SalarioDevengadoPaciente, cuotaModeradora)
+        public RegimenSubsidiado(string NumeroLiquidacion, string IdPaciente, string TipoAfiliacion, float SalarioDevengadoPaciente, float valorServicioPrestado)
+        : base(NumeroLiquidacion, IdPaciente, TipoAfiliacion, SalarioDevengadoPaciente)
         {
-            TipoAfiliacion = "Subsidiado";
             ValorServicioPrestado = valorServicioPrestado;
         }
 
@@ -39,7 +38,7 @@ namespace Entidades
 
         public override string ToString()
         {
-            return $"{NumeroLiquidacion};{IdPaciente};{TipoAfiliacion};{SalarioDevengadoPaciente};{CuotaModeradora};{ValorServicioPrestado};{TopeValorCuota}";
+            return $"{NumeroLiquidacion};{IdPaciente};{TipoAfiliacion};{SalarioDevengadoPaciente};{CuotaModeradora};{ValorServicioPrestado}";
         }
     }
 }

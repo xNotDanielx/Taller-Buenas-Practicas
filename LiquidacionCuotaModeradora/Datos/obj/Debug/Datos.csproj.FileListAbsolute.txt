@@ -1,0 +1,9 @@
+C:\Users\diego\OneDrive\Documentos\Ingeniería de Sistemas\Periodo 2023 - II\Programación III\CORTE II\TallerGit\Taller-Buenas-Practicas\LiquidacionCuotaModeradora\Datos\bin\Debug\Datos.dll
+C:\Users\diego\OneDrive\Documentos\Ingeniería de Sistemas\Periodo 2023 - II\Programación III\CORTE II\TallerGit\Taller-Buenas-Practicas\LiquidacionCuotaModeradora\Datos\bin\Debug\Datos.pdb
+C:\Users\diego\OneDrive\Documentos\Ingeniería de Sistemas\Periodo 2023 - II\Programación III\CORTE II\TallerGit\Taller-Buenas-Practicas\LiquidacionCuotaModeradora\Datos\bin\Debug\Entidades.dll
+C:\Users\diego\OneDrive\Documentos\Ingeniería de Sistemas\Periodo 2023 - II\Programación III\CORTE II\TallerGit\Taller-Buenas-Practicas\LiquidacionCuotaModeradora\Datos\bin\Debug\Entidades.pdb
+C:\Users\diego\OneDrive\Documentos\Ingeniería de Sistemas\Periodo 2023 - II\Programación III\CORTE II\TallerGit\Taller-Buenas-Practicas\LiquidacionCuotaModeradora\Datos\obj\Debug\Datos.csproj.AssemblyReference.cache
+C:\Users\diego\OneDrive\Documentos\Ingeniería de Sistemas\Periodo 2023 - II\Programación III\CORTE II\TallerGit\Taller-Buenas-Practicas\LiquidacionCuotaModeradora\Datos\obj\Debug\Datos.csproj.CoreCompileInputs.cache
+C:\Users\diego\OneDrive\Documentos\Ingeniería de Sistemas\Periodo 2023 - II\Programación III\CORTE II\TallerGit\Taller-Buenas-Practicas\LiquidacionCuotaModeradora\Datos\obj\Debug\Datos.csproj.CopyComplete
+C:\Users\diego\OneDrive\Documentos\Ingeniería de Sistemas\Periodo 2023 - II\Programación III\CORTE II\TallerGit\Taller-Buenas-Practicas\LiquidacionCuotaModeradora\Datos\obj\Debug\Datos.dll
+C:\Users\diego\OneDrive\Documentos\Ingeniería de Sistemas\Periodo 2023 - II\Programación III\CORTE II\TallerGit\Taller-Buenas-Practicas\LiquidacionCuotaModeradora\Datos\obj\Debug\Datos.pdb

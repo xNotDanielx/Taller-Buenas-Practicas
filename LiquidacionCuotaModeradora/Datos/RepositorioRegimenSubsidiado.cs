@@ -22,11 +22,18 @@ namespace Datos
         {
             List<RegimenSubsidiado> pacientesSubsidiados = GetAll();
 
-            foreach (var item in pacientesSubsidiados)
+            if (pacientesSubsidiados == null)
             {
-                if (item.IdPaciente == identificacion)
+                return null;
+            }
+            else
+            {
+                foreach (var item in pacientesSubsidiados)
                 {
-                    return item;
+                    if (item.IdPaciente == identificacion)
+                    {
+                        return item;
+                    }
                 }
             }
             return null;
@@ -36,11 +43,18 @@ namespace Datos
         {
             List<RegimenSubsidiado> pacientesSubsidiados = GetAll();
 
-            foreach (var item in pacientesSubsidiados)
+            if (pacientesSubsidiados == null)
             {
-                if (item.NumeroLiquidacion  == numeroLiquidacion)
+                return null;
+            }
+            else
+            {
+                foreach (var item in pacientesSubsidiados)
                 {
-                    return item;
+                    if (item.NumeroLiquidacion == numeroLiquidacion)
+                    {
+                        return item;
+                    }
                 }
             }
             return null;

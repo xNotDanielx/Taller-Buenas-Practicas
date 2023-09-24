@@ -15,13 +15,12 @@ namespace Entidades
         public float SalarioDevengadoPaciente { get; set; }
         public float CuotaModeradora { get; set; }
 
-        public Paciente(string numeroLiquidacion, string idPaciente, string tipoAfiliacion, float salarioDevengadoPaciente, float cuotaModeradora)
+        public Paciente(string numeroLiquidacion, string idPaciente, string tipoAfiliacion, float salarioDevengadoPaciente)
         {
             NumeroLiquidacion = numeroLiquidacion;
             IdPaciente = idPaciente;
             TipoAfiliacion = tipoAfiliacion;
             SalarioDevengadoPaciente = salarioDevengadoPaciente;
-            CuotaModeradora = cuotaModeradora;
         }
 
         public abstract float CalcularCuotaModeradora(float Tarifa);
