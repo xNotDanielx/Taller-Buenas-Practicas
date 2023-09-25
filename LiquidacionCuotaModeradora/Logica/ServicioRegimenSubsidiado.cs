@@ -80,7 +80,7 @@ namespace Logica
                     else
                     {
                         pacientesSubsidiados.RemoveAll(paciente => paciente.NumeroLiquidacion == numeroLiquidacion);
-                        repositorioRegimenSubsidiado.EliminarPaciente(pacientesSubsidiados);
+                        repositorioRegimenSubsidiado.ActualizarLista(pacientesSubsidiados);
                         return $"El paciente con identificación {numeroLiquidacion} ha sido eliminado correctamente de los subsidiados";
                     }
                 }
@@ -115,7 +115,7 @@ namespace Logica
                             {
                                 pacientesSubsidiados[i].ValorServicioPrestado = NuevoValorServicioPrestado();
                                 pacientesSubsidiados[i].ValidarCuotaModeradora();
-                                repositorioRegimenSubsidiado.EliminarPaciente(pacientesSubsidiados);
+                                repositorioRegimenSubsidiado.ActualizarLista(pacientesSubsidiados);
                                 
                                 Console.SetCursorPosition(10, 10); Console.WriteLine("Valor de servicio prestado modificado correctamente");
                                 Console.SetCursorPosition(10, 12); Console.WriteLine("Pulse cualquier tecla para volver al menú");

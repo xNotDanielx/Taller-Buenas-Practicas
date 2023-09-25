@@ -69,7 +69,9 @@ namespace Datos
             Paciente.TipoAfiliacion = datos[2];
             Paciente.SalarioDevengadoPaciente = float.Parse(datos[3]);
             Paciente.CuotaModeradora = float.Parse(datos[4]);
-            Paciente.ValorServicioPrestado = float.Parse(datos[5]);
+            Paciente.Tarifa = float.Parse(datos[5]);
+            Paciente.TopeMaximo = datos[6];
+            Paciente.ValorServicioPrestado = float.Parse(datos[7]);
             return Paciente;
         }
 
@@ -93,7 +95,7 @@ namespace Datos
             }
         }
 
-        public void EliminarPaciente(List<RegimenSubsidiado> Pacientes)
+        public void ActualizarLista(List<RegimenSubsidiado> Pacientes)
         {
             string rutatemp = "Temporal.txt";
             try

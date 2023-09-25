@@ -4,3 +4,9 @@ C:\Users\diego\OneDrive\Documentos\Ingeniería de Sistemas\Periodo 2023 - II\Pro
 C:\Users\diego\OneDrive\Documentos\Ingeniería de Sistemas\Periodo 2023 - II\Programación III\CORTE II\TallerGit\Taller-Buenas-Practicas\LiquidacionCuotaModeradora\Entidades\bin\Debug\Entidades.pdb
 C:\Users\diego\OneDrive\Documentos\Ingeniería de Sistemas\Periodo 2023 - II\Programación III\CORTE II\TallerGit\Taller-Buenas-Practicas\LiquidacionCuotaModeradora\Entidades\obj\Debug\Entidades.dll
 C:\Users\diego\OneDrive\Documentos\Ingeniería de Sistemas\Periodo 2023 - II\Programación III\CORTE II\TallerGit\Taller-Buenas-Practicas\LiquidacionCuotaModeradora\Entidades\obj\Debug\Entidades.pdb
+C:\Users\Daniel\Documents\Taller-Buenas-Practicas\LiquidacionCuotaModeradora\Entidades\bin\Debug\Entidades.dll
+C:\Users\Daniel\Documents\Taller-Buenas-Practicas\LiquidacionCuotaModeradora\Entidades\bin\Debug\Entidades.pdb
+C:\Users\Daniel\Documents\Taller-Buenas-Practicas\LiquidacionCuotaModeradora\Entidades\obj\Debug\Entidades.csproj.AssemblyReference.cache
+C:\Users\Daniel\Documents\Taller-Buenas-Practicas\LiquidacionCuotaModeradora\Entidades\obj\Debug\Entidades.csproj.CoreCompileInputs.cache
+C:\Users\Daniel\Documents\Taller-Buenas-Practicas\LiquidacionCuotaModeradora\Entidades\obj\Debug\Entidades.dll
+C:\Users\Daniel\Documents\Taller-Buenas-Practicas\LiquidacionCuotaModeradora\Entidades\obj\Debug\Entidades.pdb

@@ -10,15 +10,18 @@ namespace Presentacion
 {
     public class VistasGUI
     {
-        public void MenuVistas()
+        public void MenuFiltros()
         {
-            int opcionSeleccionada = 0;
+            int opcionSeleccionada;
 
             do
             {
                 Console.Clear();
                 Console.SetCursorPosition(10, 5); Console.WriteLine("Bienvenido al sistema de Vistas de la aplicación");
                 Console.SetCursorPosition(10, 7); Console.WriteLine("1. Ver total de cuotas moderadoras liquidadas por tipo de afiliación");
+                Console.SetCursorPosition(10, 8); Console.WriteLine("2. Ver cuotas moderadoras liquidadas por tipo de afiliación");
+                Console.SetCursorPosition(10, 9); Console.WriteLine("0. Volver");
+                Console.SetCursorPosition(10, 9); Console.WriteLine("Opcion: "); opcionSeleccionada = int.Parse(Console.ReadLine());
                 try
                 {
                     Console.Clear();
@@ -29,7 +32,7 @@ namespace Presentacion
                             TotalizarCuotasModeradorasLiquidadasPorTipoDeAfiliacion();
                             break;
                         case 2:
-                            //VistaCuotasModeradorasLiquidadasPorTipoAfiliacion();
+                            VistaTotalCuotasCuotasModeradoras();
                             break;
                         case 3:
 
@@ -37,13 +40,10 @@ namespace Presentacion
                         case 4:
 
                             break;
-                        case 5:
 
+                        case 0:
                             break;
-                        case 6:
-                            Console.SetCursorPosition(10, 23); Console.Write("TERMINANDO PROGRAMA...");
-                            Thread.Sleep(1500);
-                            break;
+
                         default:
                             Console.Clear();
                             Console.WriteLine("¡ERROR! La opción digitada no existe");
@@ -59,55 +59,19 @@ namespace Presentacion
                     Console.WriteLine("Pulse cualquier tecla para volver al menú");
                     Console.ReadKey();
                 }
-            } while (opcionSeleccionada != 6);
+            } while (opcionSeleccionada != 0);
         }
-
-        public void VistaCuotasModeradorasLiquidadasPorTipoAfiliacion()
-        {
-            int OpcionSeleccionada = 0;
-            do
-            {
-                Console.Clear();
-                Console.SetCursorPosition(10, 5); Console.WriteLine("1- Regimen Contributivo");
-                Console.SetCursorPosition(10, 7); Console.WriteLine("2- Regimen Subsidiado");
-                Console.SetCursorPosition(10, 9); Console.WriteLine("Opción: "); OpcionSeleccionada = int.Parse(Console.ReadLine());
-                try
-                {
-                    switch (OpcionSeleccionada)
-                    {
-                        case 1:
-                            VerCuotaRegimenContributivo();
-                            break;
-                        case 2:
-                            //VerCuotaRegimenSubsidiado();
-                            break;
-                        default:
-                            Console.Clear();
-                            Console.WriteLine("¡ERROR! La opción digitada no existe");
-                            Console.WriteLine("Pulse cualquier tecla para volver al menú");
-                            Console.ReadKey();
-                            break;
-                    }
-                }
-                catch (Exception)
-                {
-                    Console.Clear();
-                    Console.WriteLine("¡ERROR! Caracter no válido");
-                    Console.WriteLine("Pulse cualquier tecla para volver al menú");
-                    Console.ReadKey();
-                }
-            } while (OpcionSeleccionada != 0);
-        }
-
+        
         public void TotalizarCuotasModeradorasLiquidadasPorTipoDeAfiliacion()
         {
-            int OpcionSeleccionada = 0;
+            int OpcionSeleccionada;
             do
             {
                 Console.Clear();
-                Console.SetCursorPosition(10, 5); Console.WriteLine("1- Regimen Contributivo");
-                Console.SetCursorPosition(10, 7); Console.WriteLine("2- Regimen Subsidiado");
-                Console.SetCursorPosition(10, 9); Console.WriteLine("Opción: "); OpcionSeleccionada = int.Parse(Console.ReadLine());
+                Console.SetCursorPosition(10, 5); Console.WriteLine("1. Regimen Contributivo");
+                Console.SetCursorPosition(10, 7); Console.WriteLine("2. Regimen Subsidiado");
+                Console.SetCursorPosition(10, 9); Console.WriteLine("0. Volver");
+                Console.SetCursorPosition(10, 9); Console.Write("Opción: "); OpcionSeleccionada = int.Parse(Console.ReadLine());
                 try
                 {
                     switch (OpcionSeleccionada)
@@ -115,9 +79,14 @@ namespace Presentacion
                         case 1:
                             TotalRegimenContributivo();
                             break;
+
                         case 2: 
                             TotalRegimenSubsidiado();
                             break;
+
+                        case 0:
+                            break;
+
                         default:
                             Console.Clear();
                             Console.WriteLine("¡ERROR! La opción digitada no existe");
@@ -134,94 +103,89 @@ namespace Presentacion
                     Console.ReadKey();
                 }
             }while(OpcionSeleccionada != 0);
-        }
-
-        public void VerCuotaRegimenSubsidiado()
-        {
-            ServicioRegimenSubsidiado servicioRegimenSubsidiado = new ServicioRegimenSubsidiado();
-            Console.Clear();
-            int i = 7;
-            if (servicioRegimenSubsidiado.GetAll() == null)
-            {
-                Console.SetCursorPosition(10, 10); Console.WriteLine("No hay pacientes en el regimen subsidiado");
-                Console.SetCursorPosition(10, 12); Console.WriteLine("Pulse enter para volver..."); Console.ReadKey();
-            }
-            else
-            {
-                Console.SetCursorPosition(10, 5); Console.WriteLine("Cuotas Moderadoras Regimen Subsidiado");
-                Console.SetCursorPosition(10, 6); Console.WriteLine("|Numero Liquidacion|----ID----|Tipo de afiliacion|Cuota Moderadora|");
-                Console.SetCursorPosition(10, 7); Console.WriteLine("|                  |          |                  |                |");
-                Console.SetCursorPosition(10, 8); Console.WriteLine("|                  |          |                  |                |");
-                Console.SetCursorPosition(10, 9); Console.WriteLine("|                  |          |                  |                |");
-                Console.SetCursorPosition(10, 10); Console.WriteLine("|                  |          |                  |                |");
-                Console.SetCursorPosition(10, 11); Console.WriteLine("|                  |          |                  |                |");
-                Console.SetCursorPosition(10, 12); Console.WriteLine("|                  |          |                  |                |");
-                Console.SetCursorPosition(10, 13); Console.WriteLine("|                  |          |                  |                |");
-                Console.SetCursorPosition(10, 14); Console.WriteLine("|                  |          |                  |                |");
-                Console.SetCursorPosition(10, 15); Console.WriteLine("|                  |          |                  |                |");
-                Console.SetCursorPosition(10, 16); Console.WriteLine("|                  |          |                  |                |");
-
-                foreach (var item in servicioRegimenSubsidiado.GetAll())
-                {
-                    Console.SetCursorPosition(2, i); Console.Write(item.NumeroLiquidacion);
-                    Console.SetCursorPosition(20, i); Console.Write(item.IdPaciente);
-                    Console.SetCursorPosition(35, i); Console.Write(item.TipoAfiliacion);
-                    Console.SetCursorPosition(55, i); Console.Write(item.CuotaModeradora);
-                    i++;
-                }
-                Console.SetCursorPosition(10, i + 2); Console.WriteLine("Pulse enter para volver..."); Console.ReadKey();
-            }
-        }
-
-        public void VerCuotaRegimenContributivo()
-        {
-            ServicioRegimenContributivo servicioRegimenContributivo = new ServicioRegimenContributivo();
-            Console.Clear();
-            int i = 7;
-            if(servicioRegimenContributivo.GetAll() == null)
-            {
-                Console.SetCursorPosition(10, 10); Console.WriteLine("No hay pacientes en el regimen contributivo");
-                Console.SetCursorPosition(10, 12); Console.WriteLine("Pulse enter para volver..."); Console.ReadKey();
-            }
-            else
-            {
-                Console.SetCursorPosition(10, 5); Console.WriteLine("Cuotas Moderadoras Regimen Contributivo");
-                Console.SetCursorPosition(10, 6); Console.WriteLine("|Numero Liquidacion|----ID----|Tipo de afiliacion|Cuota Moderadora|");
-                Console.SetCursorPosition(10, 7); Console.WriteLine("|                  |          |                  |                |");
-                Console.SetCursorPosition(10, 8); Console.WriteLine("|                  |          |                  |                |");
-                Console.SetCursorPosition(10, 9); Console.WriteLine("|                  |          |                  |                |");
-                Console.SetCursorPosition(10, 10); Console.WriteLine("|                  |          |                  |                |");
-                Console.SetCursorPosition(10, 11); Console.WriteLine("|                  |          |                  |                |");
-                Console.SetCursorPosition(10, 12); Console.WriteLine("|                  |          |                  |                |");
-                Console.SetCursorPosition(10, 13); Console.WriteLine("|                  |          |                  |                |");
-                Console.SetCursorPosition(10, 14); Console.WriteLine("|                  |          |                  |                |");
-                Console.SetCursorPosition(10, 15); Console.WriteLine("|                  |          |                  |                |");
-                Console.SetCursorPosition(10, 16); Console.WriteLine("|                  |          |                  |                |");
-
-                foreach (var item in servicioRegimenContributivo.GetAll())
-                {
-                    Console.SetCursorPosition(2, i); Console.Write(item.NumeroLiquidacion);
-                    Console.SetCursorPosition(20, i); Console.Write(item.IdPaciente);
-                    Console.SetCursorPosition(35, i); Console.Write(item.TipoAfiliacion);
-                    Console.SetCursorPosition(55, i); Console.Write(item.CuotaModeradora);
-                    i++;
-                }
-                Console.SetCursorPosition(10, i+2); Console.WriteLine("Pulse enter para volver..."); Console.ReadKey();
-            }
-        }
+        }        
 
         public void TotalRegimenContributivo()
         {
             ServicioRegimenContributivo servicioRegimenContributivo = new ServicioRegimenContributivo();
             Console.Clear();
-            Console.SetCursorPosition(10, 5); Console.WriteLine($"Se han realizado {servicioRegimenContributivo.GetAll().Count()} liquidaciones hasta el momento");
+            if (servicioRegimenContributivo.GetAll() == null)
+            {
+                Console.SetCursorPosition(10, 5); Console.WriteLine("No hay pacientes en el regimen subsidiado");
+                Console.SetCursorPosition(10, 7); Console.WriteLine("Pulse enter para volver..."); Console.ReadKey();
+            }
+            else
+            {
+                Console.SetCursorPosition(10, 5); Console.WriteLine($"Se han realizado {servicioRegimenContributivo.GetAll().Count()} liquidaciones hasta el momento");
+                Console.SetCursorPosition(10, 7); Console.WriteLine("Pulse enter para volver..."); Console.ReadKey();
+            }
         }
 
         public void TotalRegimenSubsidiado()
         {
             ServicioRegimenSubsidiado servicioRegimenSubsidiado = new ServicioRegimenSubsidiado();
             Console.Clear();
-            Console.SetCursorPosition(10, 5); Console.WriteLine($"Se han realizado {servicioRegimenSubsidiado.GetAll().Count()} liquidaciones hasta el momento");
+            if (servicioRegimenSubsidiado.GetAll() == null)
+            {
+                Console.SetCursorPosition(10, 5); Console.WriteLine("No hay pacientes en el regimen subsidiado");
+                Console.SetCursorPosition(10, 7); Console.WriteLine("Pulse enter para volver..."); Console.ReadKey();
+            }
+            else
+            {
+                Console.SetCursorPosition(10, 5); Console.WriteLine($"Se han realizado {servicioRegimenSubsidiado.GetAll().Count()} liquidaciones hasta el momento");
+                Console.SetCursorPosition(10, 7); Console.WriteLine("Pulse enter para volver..."); Console.ReadKey();
+            }            
+        }
+        
+        public void VistaTotalCuotasCuotasModeradoras()
+        {
+            ServicioRegimenContributivo servicioRegimenContributivo = new ServicioRegimenContributivo();
+            ServicioRegimenSubsidiado servicioRegimenSubsidiado = new ServicioRegimenSubsidiado();
+            Console.Clear();
+            if ((TotalCuotasRegimenContributivo() == 0) && (TotalCuotasRegimenSubsidiado() == 0))
+            {
+                Console.SetCursorPosition(10, 5); Console.WriteLine("No hay cuotas moderadoras liquidadas hasta el momento");
+                Console.SetCursorPosition(10, 7); Console.WriteLine("Pulse enter para volver..."); Console.ReadKey();
+            }
+            else
+            {
+                Console.SetCursorPosition(10, 5); Console.WriteLine($"El total de cuotas moderadoras liquidadas hasta el momento es de: {TotalCuotasRegimenContributivo() + TotalCuotasRegimenSubsidiado()}$");
+                Console.SetCursorPosition(10, 7); Console.WriteLine($"{TotalCuotasRegimenContributivo()}$ en el régimen contributivo");
+                Console.SetCursorPosition(10, 8); Console.WriteLine($"{TotalCuotasRegimenSubsidiado()}$ en el régimen subsidiado");
+                Console.SetCursorPosition(10, 10); Console.WriteLine("Pulse enter para volver..."); Console.ReadKey();
+            }
+        }
+
+        public float TotalCuotasRegimenContributivo()
+        {
+            ServicioRegimenContributivo servicioRegimenContributivo = new ServicioRegimenContributivo();
+            float Total;
+            if(servicioRegimenContributivo.GetAll() == null)
+            {
+                Total = 0f;
+                return Total;
+            }
+            else
+            {
+                Total = servicioRegimenContributivo.GetAll().Sum(x => x.CuotaModeradora);
+                return Total;
+            }
+        }
+
+        public float TotalCuotasRegimenSubsidiado()
+        {
+            ServicioRegimenSubsidiado servicioRegimenSubsidiado = new ServicioRegimenSubsidiado();
+            float Total;
+            if (servicioRegimenSubsidiado.GetAll() == null)
+            {
+                Total = 0f;
+                return Total;
+            }
+            else
+            {
+                Total = servicioRegimenSubsidiado.GetAll().Sum(x => x.CuotaModeradora);
+                return Total;
+            }
         }
     }
 }

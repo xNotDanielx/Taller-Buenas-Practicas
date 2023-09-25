@@ -76,15 +76,17 @@ namespace Datos
 
         public RegimenContributivo Mapper(string linea)
         {
-            var Paciente = new RegimenContributivo();
+            var paciente = new RegimenContributivo();
             string[] datos = linea.Split(';');
-            Paciente.NumeroLiquidacion = datos[0];
-            Paciente.IdPaciente = datos[1];
-            Paciente.TipoAfiliacion = datos[2];
-            Paciente.SalarioDevengadoPaciente = float.Parse(datos[3]);
-            Paciente.CuotaModeradora = float.Parse(datos[4]);
-            Paciente.ValorServicioPrestado = float.Parse(datos[5]);
-            return Paciente;
+            paciente.NumeroLiquidacion = datos[0];
+            paciente.IdPaciente = datos[1];
+            paciente.TipoAfiliacion = datos[2];
+            paciente.SalarioDevengadoPaciente = float.Parse(datos[3]);
+            paciente.CuotaModeradora = float.Parse(datos[4]);
+            paciente.Tarifa = float.Parse(datos[5]);
+            paciente.TopeMaximo = datos[6];
+            paciente.ValorServicioPrestado = float.Parse(datos[7]);
+            return paciente;
         }
 
         public List<RegimenContributivo> GetAll()
@@ -107,7 +109,7 @@ namespace Datos
             }
         }
 
-        public void EliminarPaciente(List<RegimenContributivo> Pacientes)
+        public void ActualizarLista(List<RegimenContributivo> Pacientes)
         {
             string rutatemp = "Temporal.txt";
             try

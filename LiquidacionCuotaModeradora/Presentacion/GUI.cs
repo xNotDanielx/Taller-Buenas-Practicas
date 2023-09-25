@@ -11,8 +11,9 @@ namespace Presentacion
 {
     public class GUI
     {
+        VistasGUI vistasGUI = new VistasGUI();
         public void Menu()
-        {
+        {            
             int opcionSeleccionada = 0;
 
             do
@@ -36,10 +37,10 @@ namespace Presentacion
                             RegistrarPaciente();
                             break;
                         case 2:
-                            //ConsultarTodos();
+                            VerTodasLasCuotasModeradoras();
                             break;
                         case 3:
-                            //ConsultarConFlitro(); Aquí se pone el menú de VistasGUI
+                            vistasGUI.MenuFiltros();
                             break;
                         case 4:
                             EliminarLiquidacion();
@@ -170,5 +171,58 @@ namespace Presentacion
             servicioRegimenContributivo.ModificarPaciente(numeroLiquidacion);
 
         }
+
+        public void VerTodasLasCuotasModeradoras()
+        {
+            ServicioRegimenSubsidiado servicioRegimenSubsidiado = new ServicioRegimenSubsidiado();
+            ServicioRegimenContributivo servicioRegimenContributivo = new ServicioRegimenContributivo();
+            Console.Clear();
+            int i = 3;
+            if (servicioRegimenSubsidiado.GetAll() == null && servicioRegimenContributivo.GetAll() == null)
+            {
+                Console.SetCursorPosition(10, 10); Console.WriteLine("No hay pacientes Registrados");
+                Console.SetCursorPosition(10, 12); Console.WriteLine("Pulse enter para volver..."); Console.ReadKey();
+            }
+            else
+            {
+                Console.SetCursorPosition(5, 2); Console.WriteLine("Cuotas Moderadoras Regimen Subsidiado");
+                Console.SetCursorPosition(5, 3); Console.WriteLine("|----ID----|Tipo de afiliacion|Salario Devengado|Valor Servicio|Tarifa|Tope Maximo|Cuota Moderadora|");
+                Console.SetCursorPosition(5, 4); Console.WriteLine("|          |                  |                 |              |      |           |                |");
+                Console.SetCursorPosition(5, 5); Console.WriteLine("|          |                  |                 |              |      |           |                |");
+                Console.SetCursorPosition(5, 6); Console.WriteLine("|          |                  |                 |              |      |           |                |");
+                Console.SetCursorPosition(5, 7); Console.WriteLine("|          |                  |                 |              |      |           |                |");
+                Console.SetCursorPosition(5, 8); Console.WriteLine("|          |                  |                 |              |      |           |                |");
+                if(servicioRegimenContributivo.GetAll() != null)
+                {
+                    foreach (var item in servicioRegimenContributivo.GetAll())
+                    {
+                        i++;
+                        Console.SetCursorPosition(6, i); Console.Write(item.IdPaciente);
+                        Console.SetCursorPosition(20, i); Console.Write(item.TipoAfiliacion);
+                        Console.SetCursorPosition(38, i); Console.Write(item.SalarioDevengadoPaciente + "$");
+                        Console.SetCursorPosition(59, i); Console.Write(item.ValorServicioPrestado + "$");
+                        Console.SetCursorPosition(70, i); Console.Write((item.Tarifa*100) + "%");
+                        Console.SetCursorPosition(80, i); Console.Write(item.TopeMaximo);
+                        Console.SetCursorPosition(92, i); Console.Write(item.CuotaModeradora + "$");
+                    }
+                }
+
+                if(servicioRegimenSubsidiado.GetAll() != null)
+                {
+                    foreach (var item in servicioRegimenSubsidiado.GetAll())
+                    {
+                        i++;
+                        Console.SetCursorPosition(6, i); Console.Write(item.IdPaciente);
+                        Console.SetCursorPosition(20, i); Console.Write(item.TipoAfiliacion);
+                        Console.SetCursorPosition(38, i); Console.Write(item.SalarioDevengadoPaciente + "$");
+                        Console.SetCursorPosition(59, i); Console.Write(item.ValorServicioPrestado + "$");
+                        Console.SetCursorPosition(70, i); Console.Write((item.Tarifa * 100) + "%");
+                        Console.SetCursorPosition(80, i); Console.Write(item.TopeMaximo);
+                        Console.SetCursorPosition(92, i); Console.Write(item.CuotaModeradora + "$");
+                    }
+                }
+                Console.SetCursorPosition(10, 30); Console.WriteLine("Pulse enter para volver..."); Console.ReadKey();
+            }
+        }       
     }
 }

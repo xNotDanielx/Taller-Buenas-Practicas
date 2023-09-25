@@ -11,6 +11,6 @@ namespace Datos
         void GuardarPaciente(T paciente);
         T Mapper(string linea);
         List<T> GetAll();
-        void EliminarPaciente(List<T> Pacientes);        
+        void ActualizarLista(List<T> Pacientes);        
     }
 }

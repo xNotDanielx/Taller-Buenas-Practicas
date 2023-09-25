@@ -9,6 +9,8 @@ namespace Entidades
     public class RegimenSubsidiado : Paciente
     {
         public RegimenSubsidiado(){ }
+        public float Tarifa { get; set; }
+        public string TopeMaximo { get; set; }
         public float ValorServicioPrestado { get; set; }
 
         public RegimenSubsidiado(string NumeroLiquidacion, string IdPaciente, string TipoAfiliacion, float SalarioDevengadoPaciente, float valorServicioPrestado)
@@ -25,20 +27,32 @@ namespace Entidades
 
         public override void ValidarCuotaModeradora()
         {
-            float Tarifa = 0.05f;
+            Tarifa = 0.05f;
             if(CalcularCuotaModeradora(Tarifa) > 200000)
             {
+                TopeMaximoSi();
                 CuotaModeradora = 200000;
             }
             else
             {
+                TopeMaximoNo();
                 CuotaModeradora = CalcularCuotaModeradora(Tarifa);
             }
         }
 
+        public override void TopeMaximoSi()
+        {
+            TopeMaximo = "Si";
+        }
+
+        public override void TopeMaximoNo()
+        {
+            TopeMaximo = "No";
+        }
+
         public override string ToString()
         {
-            return $"{NumeroLiquidacion};{IdPaciente};{TipoAfiliacion};{SalarioDevengadoPaciente};{CuotaModeradora};{ValorServicioPrestado}";
+            return $"{NumeroLiquidacion};{IdPaciente};{TipoAfiliacion};{SalarioDevengadoPaciente};{CuotaModeradora};{Tarifa};{TopeMaximo};{ValorServicioPrestado}";
         }
     }
 }
